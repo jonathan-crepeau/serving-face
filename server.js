@@ -16,8 +16,7 @@ const PORT = process.env.PORT || 5000;
 // ANCHOR - Body Parser
 app.use(bodyParser.json());
 
-// ANCHOR - Logger
-// app.use(logger);
+app.use(logger);
 
 
 // HTML Routes ================================== //
