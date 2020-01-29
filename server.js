@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 // Internal Modules ================================== //
 const db = require('./models');
+const logger = require('./middleware/logger');
 
 // Configuration Models ================================== //
 const PORT = process.env.PORT || 5000;
@@ -12,7 +13,12 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware ================================== //
 
+// ANCHOR - Body Parser
 app.use(bodyParser.json());
+
+// ANCHOR - Logger
+// app.use(logger);
+
 
 // HTML Routes ================================== //
 
