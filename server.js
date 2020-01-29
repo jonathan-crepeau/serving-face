@@ -1,6 +1,7 @@
 // External Modules ================================== // 
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 
 // Internal Modules ================================== //
 const db = require('./models');
@@ -10,6 +11,8 @@ const PORT = process.env.PORT || 5000;
 
 
 // Middleware ================================== //
+
+app.use(bodyParser.json());
 
 // HTML Routes ================================== //
 
@@ -46,6 +49,24 @@ app.get('/profile', (request, response) => {
 });
 
 // API Routes ================================== //
+
+// ANCHOR - GET Index Users
+
+app.get('/api/v1/users', (request, response) => {
+    db.User.find({}, (error, indexUsers) => {
+        if (error) return response.status(500).json({message: 'Something is wrong. Please try again.'});
+        response.status(200).json(indexUsers);
+    });
+});
+
+// ANCHOR - POST Create Single user
+
+app.post('/api/v1/users', (request, response) => {
+    db.User.create(request.body, (error, createUser) => {
+        if (error) return response.status(500).json({message: 'Something is wrong, try again.'});
+        response.status(200).json(createUser);
+    });
+});
 
 // Start Server ================================== //
 

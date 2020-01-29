@@ -21,6 +21,12 @@ const userSchema = new mongoose.Schema({
         minlength: [7, 'Password must be at least 7 characters long.'],
         maxlength: [25, 'Password cannot exceed 25 characters long.'],
     },
+    password: {
+        type: String,
+        required: [true, 'Password is required.'],
+        minlength: [7, 'Password must be at least 7 characters long.'],
+        maxlength: [25, 'Password cannot exceed 25 characters long.'],
+    },
 }, {timestamps: true});
 
 const User = mongoose.model('User', userSchema);
