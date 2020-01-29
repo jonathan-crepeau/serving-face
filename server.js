@@ -3,9 +3,11 @@ const express = require('express');
 const app = express();
 
 // Internal Modules ================================== //
-const PORT = process.env.PORT || 5000;
+const db = require('./models');
 
 // Configuration Models ================================== //
+const PORT = process.env.PORT || 5000;
+
 
 // Middleware ================================== //
 
@@ -42,7 +44,6 @@ app.get('/profile', (request, response) => {
     <h1>Profile Route</h1>
     `);
 });
-
 
 // API Routes ================================== //
 
